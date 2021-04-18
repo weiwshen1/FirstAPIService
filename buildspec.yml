@@ -22,9 +22,9 @@ phases:
       - docker build --target componenttestrunner -t example-service-component-tests:latest .
       - echo running unit test...
       - docker build -t apiforcomponenttest .
-      - docker run --rm -it -p 5000:80 apiforcomponenttest
+      - docker run -p 5000:80 apiforcomponenttest
       - docker run --network=host example-service-component-tests:latest
-      - docker stop apiforcomponenttest    
+      - docker rm apiforcomponenttest    
       - echo Building the Docker image...
       - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG .
       - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
