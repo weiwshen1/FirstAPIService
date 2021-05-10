@@ -11,7 +11,7 @@ namespace Example.Service.Services
 
     public class ValuesController : ControllerBase
     {
-        public IEnumerable<string> GetValues() => new string[] {"value1", "value2", "Wei001" };
+        public IEnumerable<string> GetValues() => new string[] {"value1", "test001", "Wei001" };
 
         public string GetValue => GetValues().First();
     }
