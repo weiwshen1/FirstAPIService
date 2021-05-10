@@ -40,7 +40,7 @@ namespace Example.Service.ComponentTest
             var response = await httpClient.GetAsync("api/values");
             var responseJson = await response.EnsureSuccessStatusCode().Content.ReadAsStringAsync();
 
-            Assert.That(responseJson, Is.EqualTo("[\"value1\",\"value2\",\"value3\"]"));
+            Assert.That(responseJson, Is.EqualTo("[\"value1\",\"value2\",\"Wei001\"]"));
         }
     }
 }
