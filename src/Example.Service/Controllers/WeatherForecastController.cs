@@ -27,13 +27,19 @@ namespace Example.Service.Controllers
         public IEnumerable<WeatherForecast> Get()
         {
             var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            })
-            .ToArray();
+            List<WeatherForecast> weatherForecasts = new List<WeatherForecast>();
+
+            weatherForecasts.Add(new WeatherForecast {Date = DateTime.Now, TemperatureC = 20, Summary = "First TemperatureC" });
+            weatherForecasts.Add(new WeatherForecast { Date = DateTime.Now, TemperatureC = 40, Summary = "Second TemperatureC" });
+            weatherForecasts.Add(new WeatherForecast { Date = DateTime.Now, TemperatureC = 50, Summary = "Third TemperatureC" });
+            return weatherForecasts.ToArray();
+            //return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            //{
+            //    Date = DateTime.Now.AddDays(index),
+            //    TemperatureC = rng.Next(-20, 55),
+            //    Summary = Summaries[rng.Next(Summaries.Length)]
+            //})
+            //.ToArray();
         }
     }
 }
