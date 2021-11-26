@@ -26,12 +26,14 @@ namespace Example.Service.Controllers
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
+            string environmentName = Environment.GetEnvironmentVariable("environment");
+
             var rng = new Random();
             List<WeatherForecast> weatherForecasts = new List<WeatherForecast>();
 
-            weatherForecasts.Add(new WeatherForecast {Date = DateTime.Now, TemperatureC = 20, Summary = "First TemperatureC" });
-            weatherForecasts.Add(new WeatherForecast { Date = DateTime.Now, TemperatureC = 40, Summary = "Second TemperatureC" });
-            weatherForecasts.Add(new WeatherForecast { Date = DateTime.Now, TemperatureC = 50, Summary = "Third TemperatureC" });
+            weatherForecasts.Add(new WeatherForecast {Date = DateTime.Now, TemperatureC = 20, Summary = $"First TemperatureC - {environmentName}" });
+            weatherForecasts.Add(new WeatherForecast { Date = DateTime.Now, TemperatureC = 40, Summary = $"Second TemperatureC - {environmentName}" });
+            weatherForecasts.Add(new WeatherForecast { Date = DateTime.Now, TemperatureC = 50, Summary = $"Third TemperatureC - {environmentName}" });
             return weatherForecasts.ToArray();
             //return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             //{
